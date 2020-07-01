@@ -1,0 +1,74 @@
+﻿@model TourCore.Models.Commands.InsertTourCommand
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@{
+    ViewData["Title"] = "InsertTour";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 style="text-align:center;color:brown;text-transform:uppercase">Thêm tour mới</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("InsertTour", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for=@Model.Code class="control-label">Mã Tour</label>
+                <input asp-for=@Model.Code class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameTour" class="control-label">Tên tour</label>
+                <input name="NameTour" class="form-control" />
+                <span asp-validation-for="NameTour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Day" class="control-label">Ngày</label>
+                <input name="Day" class="form-control" />
+                <span asp-validation-for="Day" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Night" class="control-label">Đêm</label>
+                <input name="Night" class="form-control" />
+                <span asp-validation-for="Night" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cost" class="control-label">Giá Tour</label>
+                <input name="Cost" class="form-control" />
+                <span asp-validation-for="Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label">Hình Ảnh</label>
+                <input name="Picture" class="form-control input-file" type="file" />
+                <span asp-validation-for="Picture" class="text-danger" style="color:red">@ViewBag.Picture</span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Trong nước hay nước ngoài</label>
+                <select class="form-control" name="CheckNational">
+                    <option value="true">Tour Trong Nước</option>
+                    <option value="false">Tour Nước Ngoài</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label">Số lượng</label>
+                <input name="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Mô tả chi tiết</label>
+                <input name="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Title</label>
+                <input name="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm tour mới" class="btn btn-primary" />
+            </div>
+        }
+    </div>
+</div>

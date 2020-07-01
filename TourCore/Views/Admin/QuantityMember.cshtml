@@ -1,0 +1,21 @@
+﻿@model IEnumerable<TourCore.Models.ViewModels.MemberViewModel>
+@{
+    ViewData["Title"] = "QuantityMember";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <td>Mã thành viên</td>
+        <td>Tên thành viên</td>
+        <td>Email</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Username</td>
+            <td>@item.Email</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,82 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@*@using X.PagedList.Web.Common;*@
+@model IPagedList<TourCore.Models.ViewModels.TourViewModel>
+
+@{
+    ViewData["Title"] = "ShowAllTour";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 style="color:brown;text-align:center">Danh sách tour du lịch</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().NameTour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Day)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Night)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Quantity)
+            </th>
+
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <input type="hidden" name="@item.Id" />
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameTour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Day)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Night)
+                </td>
+                <td>
+                    @item.Cost?.ToString("#,##") VNĐ
+                </td>
+                <td>
+                    <img src="@Url.Content("/images/tour_images/" + item.Picture)" style="width:150px;height:200px;" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Sửa", "EditTour", "Admin", new { id = item.Id }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { /* id=item.PrimaryKey */ }) |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("ShowAllTour", new { page }))

@@ -1,0 +1,10 @@
+﻿<style>
+    form > input {
+        height: 50px;
+    }
+</style>
+@using (Html.BeginForm("FindTour", "Tour", FormMethod.Post, new { @style = "text-align:center" }))
+{
+    <input type="text" placeholder="Địa điểm bạn muốn tới" name="nameTour"/>
+    <input type="submit" value="Tìm kiếm" style="background-color:greenyellow" />
+}

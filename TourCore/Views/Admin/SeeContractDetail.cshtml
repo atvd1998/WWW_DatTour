@@ -1,0 +1,32 @@
+﻿@model TourCore.Models.ViewModels.ContractDetailViewModel
+
+@{
+    ViewData["Title"] = "SeeContractDetail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    h2 {
+        color: firebrick;
+    }
+</style>
+<h1 style="text-align:center;color:brown">Chi tiết khách hàng đặt Tour @Model.NameTour</h1>
+<br />
+<div>
+    <img src="@Url.Content("/images/tour_images/" + Model.Picture)" style="width:200px;height:200px;" />
+</div>
+<br />
+<div>
+    <h2>Khách hàng : @Model.NameCustomer</h2>
+</div>
+<div>
+    <h2>Giá tiền : @Model.Cost.Value.ToString("#,##") VNĐ</h2>
+</div>
+<div>
+    <h2>Tình trạng thanh toán: @if (@Model.Paid == false) { <text>Chưa thanh toán</text>} else { <text>Đã thanh toán</text>}</h2>
+</div>
+<div>
+    <h2>Số người đi : @Model.PeopleGo</h2>
+</div>
+<div>
+    <h2>Ngày khách muốn khởi hành :@Model.BeginDate </h2>
+</div>

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "AddStaff";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    input[type=submit] {
+        font-size: 20px;
+    }
+    input[type=date]
+    {
+        font-size:20px;
+    }
+
+    input {
+        width: 50%;
+        height: 50px;
+        border-radius: 2px;
+    }
+    select{
+        font-size:20px;
+    }
+</style>
+@using (Html.BeginForm("AddStaff", "Admin"))
+{
+<div>
+    <div class="col-3">
+        <label style="font-size:20px">Tên nhân viên </label>
+    </div>
+    <div class="col-6">
+        <input type="text" name="Name" />
+    </div>
+    <br />
+    <div>
+        <label style="font-size:20px">Địa chỉ</label>
+    </div>
+    <div>
+        <input type="text" name="Address" />
+    </div>
+    <br />
+    <div>
+        <label style="font-size:20px">Ngày sinh</label>
+    </div>
+    <div>
+        <input type="date" name="DOB" />
+    </div>
+    <br />
+    <div>
+        <label style="font-size:20px">Số điện thoại</label>
+    </div>
+    <div>
+        <input type="number" name="Phone" />
+    </div>
+    <br />
+    <br />
+    <div>
+        <label style="font-size:20px">Chọn giới tính</label>
+        <select name="Gender">
+            <option value="true">Nam</option>
+            <option value="false">Nữ</option>
+        </select>
+    </div>
+    <br />
+    <br />
+    <div>
+        <input type="submit" value="Lưu thông tin" class="btn btn-success" />
+    </div>
+</div>
+}

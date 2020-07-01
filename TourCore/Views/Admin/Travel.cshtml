@@ -1,0 +1,80 @@
+﻿@model IEnumerable<TourCore.Models.ViewModels.ContractDetailViewModel>
+
+@{
+    ViewData["Title"] = "Travel";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    tbody > tr > td {
+        text-align: center;
+    }
+
+    thead > tr > th {
+        text-align: center;
+    }
+</style>
+<h1 style="text-align:center;color:brown">Danh sách khánh hàng Book Tour</h1>
+
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameTour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameCustomer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BeginDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paid)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @Html.HiddenFor(modelItem => item.Id)
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameTour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameCustomer)
+                </td>
+                <td>
+                    @item.Cost.Value.ToString("#,##") VNĐ
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BeginDate)
+                </td>
+
+                @if (@item.Paid == false)
+                {
+                    <td>Chưa thanh toán</td>
+                }
+                else
+                {
+                    <td>Đã thanh toán</td>
+                }
+
+                <td>
+
+                    @Html.ActionLink("Chi Tiết", "SeeContractDetail", "Admin", new { id = item.Id }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

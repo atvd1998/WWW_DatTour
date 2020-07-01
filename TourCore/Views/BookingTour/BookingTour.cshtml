@@ -1,0 +1,36 @@
+﻿@model TourCore.Models.ViewModels.TourViewModel
+
+@using (Html.BeginForm("BookingTour", "BookingTour", FormMethod.Post, new { @class = "row" }))
+{
+    <div class="col-sm-6 form-group contact-forms">
+        @Html.TextBox("Name", "", new { @class = "form-control", @placeholder = "Name" })
+        @Html.ValidationMessage("Name", "", new { @style = "color:red;" })
+    </div>
+    <div class="col-sm-6 form-group contact-forms">
+        @Html.TextBox("Email", "", new { @class = "form-control", @placeholder = "Email" })
+        @Html.ValidationMessage("Email","",new {@style="color:red;" })
+    </div>
+    <div class="col-sm-6 form-group contact-forms">
+        @Html.TextBox("Phone", "", new { @class = "form-control", @placeholder = "Phone" })
+        @Html.ValidationMessage("Phone", "", new { @style = "color:red;" })
+    </div>
+    <div class="col-sm-6 form-group contact-forms">
+        @Html.TextBox("Address", "", new { @class = "form-control", @placeholder = "Address" })
+        @Html.ValidationMessage("Address", "", new { @style = "color:red;" })
+    </div>
+    <div class="col-sm-6 form-group contact-forms">
+        @Html.TextBox("PeopleGo", "", new { @class = "form-control", @placeholder = "People Go", id = "b" })
+        @Html.ValidationMessage("PeopleGo","", new { @style = "color:red;" })
+
+    </div>
+    <div class="col-sm-6 form-group contact-forms">
+        <input type="text" name="Content" class="form-control" placeholder="Gửi yêu cầu" />
+    </div>
+    <div class="col-sm-6 form-group contact-forms">
+        <input type="date" name="BeginDate" class="form-control" placeholder="Ngày khách muốn đi" />
+    </div>
+    <input type="hidden" name="TourId" value="@Model.Id" />
+    <div class="col-md-12 booking-button">
+        <button type="submit" class="btn btn-block sent-butnn" id="btnSubmit">Đặt Tour</button>
+    </div>
+}
